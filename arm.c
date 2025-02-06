@@ -2,6 +2,7 @@
 #include <GL/gl.h>
 #include <GL/glu.h>
 #include <GL/glut.h>
+#include <stdio.h>
 #include <math.h>
 
 #define Lx 600
@@ -160,6 +161,30 @@ void animate_bug(void){
 void key(unsigned char key, int x, int y){
 	switch(key) {
 	case 'q': exit(0);
+	case 'i': {
+		theta1 = theta1 + 2;
+		printf("theta1=%0.2lf\n",theta1);
+	}
+	case 'j': {
+		theta1 = theta1 - 1;
+		printf("theta1=%0.2lf\n",theta1);
+	}
+	case 'o': {
+		theta2 = theta2 + 2;
+		printf("theta2=%0.2lf\n",theta2);
+	}
+	case 'k': {
+		theta2 = theta2 - 1;
+		printf("theta2=%0.2lf\n",theta2);
+	}
+	case 'p': {
+		theta3 = theta3 + 2;
+		printf("theta3=%0.2lf\n",theta3);
+	}
+	case 'l': {
+		theta3 = theta3 - 1;
+		printf("theta3=%0.2lf\n",theta3);
+	}
 	default: break;
 	}
 }
