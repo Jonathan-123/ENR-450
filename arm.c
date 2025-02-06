@@ -163,6 +163,7 @@ void key(unsigned char key, int x, int y){
 	case 'q': exit(0);
 	case 'i': {
 		theta1 = theta1 + 2;
+		
 		printf("theta1=%0.2lf\n",theta1);
 	}
 	case 'j': {
@@ -193,5 +194,9 @@ void Timer (int iUnused){
 	glutPostRedisplay();
 	glutTimerFunc(5, Timer, 0);
 }
+/*
+void ForwardKinematics (double T1, double T2, Double T3){
+	
 
-
+}
+*/
