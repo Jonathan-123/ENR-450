@@ -35,3 +35,8 @@ int LimitY = 0;
 int currentQ1Pos = 0;
 int desiredQ1Pos = 0;
 int LimitQ1 = 0;
+
+extern float theta1 = 0 ;
+extern float theta2 = 0 ;
+extern float theta3 = 0 ;
+extern float theta4 = 0 ;

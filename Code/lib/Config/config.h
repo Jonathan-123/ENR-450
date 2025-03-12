@@ -35,6 +35,11 @@ extern int currentQ1Pos;
 extern int desiredQ1Pos;
 extern int LimitQ1;
 
+extern float theta1;
+extern float theta2;
+extern float theta3;
+extern float theta4;
+
 
 
 #endif
