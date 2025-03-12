@@ -21,9 +21,9 @@ void setup() {
 //////////
   moveY(60);
   delay(500);
-  stepQ1(16000);
+  stepQ1(8000);
   delay(500);
-  stepQ1(-16000);
+  stepQ1(-8000);
 
   
 }

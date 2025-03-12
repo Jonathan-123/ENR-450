@@ -20,13 +20,13 @@ int YLENGTH = 49250; //STEPS (615 mm)
 int YstepsPerRev = 200;
 int YPositive = 0;
 int YNegative = 1;
-int YDELAY = 50;
+int YDELAY = 100;
 //-----Q1-----
 int Q1_uSTEP = 16;
 int Q1stepsPerRev = 200*Q1_uSTEP*8;
 int Q1Negative = 0;
 int Q1Positive = 1;
-int Q1DELAY = 50;
+int Q1DELAY = 100;
 
 //Location Data
 int currentYPos = 0;
@@ -36,7 +36,7 @@ int currentQ1Pos = 0;
 int desiredQ1Pos = 0;
 int LimitQ1 = 0;
 
-extern float theta1 = 0 ;
-extern float theta2 = 0 ;
-extern float theta3 = 0 ;
-extern float theta4 = 0 ;
+float theta1 = 0 ;
+float theta2 = 0 ;
+float theta3 = 0 ;
+float theta4 = 0 ;

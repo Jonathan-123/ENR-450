@@ -79,10 +79,11 @@ void moveY(int yPos){
   //Serial.println(deltaY);
   stepY(deltaYSteps);
 }
-
+/*
 void InverseKinematics(int i, int j){
     float omega = 90 + theta4;
     theta2 = -acos(pow(i,2) + pow(j,2)-pow(L1,2)-pow(L2,2)/(2*L1*L2));
     theta1 = atan2(j,i) - atan2((L1*sin(theta2)),(L1+(L2*sin(theta2))));
     theta3 = (omega*RADS) - theta1 - theta2;
 }
+    */
