@@ -17,9 +17,9 @@ void HomeY(){
 }
 //Homes the Q1 Stepper Motor
 void HomeQ1(){
-  digitalWrite(dirQ1,Q1Negative);
+  digitalWrite(dirQ1,Q1Positive);
   LimitQ1 = digitalRead(homeLimitQ1Min);
-  while(LimitQ1 != 1){
+  while(LimitQ1 != 0){
     digitalWrite(pinQ1, 1);
     delayMicroseconds(Q1DELAY);
     digitalWrite(pinQ1, 0);

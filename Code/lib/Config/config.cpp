@@ -10,7 +10,7 @@ int homeLimitYMin = 18;
 
 int pinQ1 = 14;
 int dirQ1 = 27;
-int homeLimitQ1Min = 0;
+int homeLimitQ1Min = 19;
 
 //Stepper Motor Specs
 //-----Y-----
@@ -20,13 +20,13 @@ int YLENGTH = 49250; //STEPS (615 mm)
 int YstepsPerRev = 200;
 int YPositive = 0;
 int YNegative = 1;
-int YDELAY = 100;
+int YDELAY = 150;
 //-----Q1-----
 int Q1_uSTEP = 16;
 int Q1stepsPerRev = 200*Q1_uSTEP*8;
 int Q1Negative = 0;
 int Q1Positive = 1;
-int Q1DELAY = 100;
+int Q1DELAY = 150;
 
 //Location Data
 int currentYPos = 0;
