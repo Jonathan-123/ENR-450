@@ -20,7 +20,7 @@ extern int YNegative;
 extern int YDELAY;
 //-----Q1-----
 extern int Q1_uSTEP;
-extern int Q1stepsPerRev;
+extern float Q1_STEPS_PER_DEGREE;
 extern int Q1Negative;
 extern int Q1Positive;
 extern int Q1DELAY;

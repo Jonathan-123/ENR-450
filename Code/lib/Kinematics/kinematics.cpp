@@ -79,6 +79,15 @@ void moveY(int yPos){
   //Serial.println(deltaY);
   stepY(deltaYSteps);
 }
+
+//moves Ystepper to an absolute Y position
+void moveQ1 (float Q1Pos){
+  //float deltaQ1 = Q1Pos - (currentQ1Pos/80);  //80 needs to be changed
+  //float deltaQ1Steps = deltaQ1 * Q1_STEPS_PER_DEGREE;
+  float deltaQ1Steps = Q1Pos*Q1_STEPS_PER_DEGREE - currentQ1Pos;
+  //Serial.println(deltaQ1Steps);
+  stepQ1((int)deltaQ1Steps);
+}
 /*
 void InverseKinematics(int i, int j){
     float omega = 90 + theta4;
