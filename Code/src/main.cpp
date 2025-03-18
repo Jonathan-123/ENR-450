@@ -15,14 +15,24 @@ void setup() {
   pinMode(dirQ1, OUTPUT);
   pinMode(homeLimitQ1Min, INPUT_PULLUP);
   Serial.begin(115200);
-  HomeY();
-  delay(10);
-  moveY(100);
-  delay(500);
+  Serial.println("hello");
+ // HomeY();
+ // Serial.println("Home Y");
+  //delay(10);
+  //moveY(100);
+  //delay(500);
   HomeQ1();
+  Serial.println("Home Q1");
   delay(500);
-  stepQ1(-8000);
-//////////
+  //stepQ1(-8000);
+  moveQ1(90);
+ // delay(150);
+ // moveQ1(111.4);
+ // delay(150);
+ // moveQ1(5.8);
+ // delay(150);
+ // moveQ1(152.6);
+  //////////
   
   
   //stepQ1(8000);

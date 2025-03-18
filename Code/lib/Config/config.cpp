@@ -23,7 +23,7 @@ int Q1_uSTEP = 16;
 float Q1_STEPS_PER_DEGREE = (200*Q1_uSTEP*10)/360;
 int Q1Negative = 0;
 int Q1Positive = 1;
-int Q1DELAY = 150;
+int Q1DELAY = 300;
 
 //Location Data
 int currentYPos = 0;

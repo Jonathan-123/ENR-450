@@ -26,7 +26,7 @@ void HomeQ1(){
     delayMicroseconds(Q1DELAY);
     LimitQ1 = digitalRead(homeLimitQ1Min);
   }
-  currentQ1Pos = 0;
+  currentQ1Pos = 16350;
 }
 
 //moves Ystepper a number of steps
@@ -53,6 +53,7 @@ void stepY(int steps){
 //moves Q1stepper a number of steps
 void stepQ1(int steps){
   int SIGN = 0;
+  Serial.print("Sign = ");
   if(steps>0){
     digitalWrite(dirQ1,Q1Positive);
     SIGN = 1;  
@@ -60,14 +61,15 @@ void stepQ1(int steps){
   if(steps<0){
     digitalWrite(dirQ1,Q1Negative);  
     SIGN = -1;
-  }  
+  }
+  Serial.println(SIGN);  
   steps = abs(steps);
   for(int i=0; i<steps; i++){
     digitalWrite(pinQ1, 1);
     delayMicroseconds(Q1DELAY);
     digitalWrite(pinQ1, 0);
     delayMicroseconds(Q1DELAY);
-    currentQ1Pos = currentQ1Pos +(SIGN);  
+    currentQ1Pos = currentQ1Pos +(SIGN);
   }
   //Serial.println(currentYPos/80);
 }
@@ -80,13 +82,19 @@ void moveY(int yPos){
   stepY(deltaYSteps);
 }
 
-//moves Ystepper to an absolute Y position
+//moves Q1stepper to an absolute Theta1 position
 void moveQ1 (float Q1Pos){
   //float deltaQ1 = Q1Pos - (currentQ1Pos/80);  //80 needs to be changed
   //float deltaQ1Steps = deltaQ1 * Q1_STEPS_PER_DEGREE;
-  float deltaQ1Steps = Q1Pos*Q1_STEPS_PER_DEGREE - currentQ1Pos;
+  float Q1Steps = Q1Pos / 0.01125;
+  //float deltaQ1Steps = Q1Pos*Q1_STEPS_PER_DEGREE - currentQ1Pos;
+  float deltaQ1Steps = Q1Steps - currentQ1Pos;
   //Serial.println(deltaQ1Steps);
-  stepQ1((int)deltaQ1Steps);
+  //int deltaQ1StepsInt = static_cast<int>(round(deltaQ1Steps));
+  int deltaQ1StepsInt = static_cast<int>(deltaQ1Steps);
+  stepQ1(deltaQ1StepsInt);
+  Serial.print(currentQ1Pos*0.01125);
+  Serial.println(" degrees - Theta1");
 }
 /*
 void InverseKinematics(int i, int j){
