@@ -14,30 +14,30 @@ void setup() {
   pinMode(pinQ1, OUTPUT);
   pinMode(dirQ1, OUTPUT);
   pinMode(homeLimitQ1Min, INPUT_PULLUP);
+  //Q1 motor Pins
+  pinMode(pinQ2, OUTPUT);
+  pinMode(dirQ2, OUTPUT);
+  pinMode(homeLimitQ2Max, INPUT_PULLUP);
+  //Q3 motor Pins
+  pinMode(pinQ3, OUTPUT);
+  pinMode(dirQ3, OUTPUT);
+  //pinMode(homeLimitQ2Max, INPUT_PULLUP);
+  
   Serial.begin(115200);
   Serial.println("hello");
- // HomeY();
- // Serial.println("Home Y");
-  //delay(10);
-  //moveY(100);
-  //delay(500);
+  //HomeY();
+  //HomeQ1();
+  //InverseKinematics(300,120);
+  HomeQ2();
+  moveQ2(-90);
   HomeQ1();
-  Serial.println("Home Q1");
+  stepQ3(-2000);
+  //Serial.println("Home Q1");
   delay(500);
-  //stepQ1(-8000);
-  moveQ1(90);
- // delay(150);
- // moveQ1(111.4);
- // delay(150);
- // moveQ1(5.8);
- // delay(150);
- // moveQ1(152.6);
-  //////////
+  moveAll(300, 0, 0);
+  delay(1000);
+  moveAll(300, 0, 50);
   
-  
-  //stepQ1(8000);
- 
-
   
 }
 
