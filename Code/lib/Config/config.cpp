@@ -22,8 +22,8 @@ int Y_uSTEP = 16;
 int Y_STEPS_PER_MM = 80;
 int YLENGTH = 49250; //STEPS (615 mm)
 int YstepsPerRev = 200;
-int YPositive = 0;
-int YNegative = 1;
+int YNegative = 0;
+int YPositive = 1;
 int YDELAY = 6250/Y_SPEED;
 //-----Q1-----
 int Q1_uSTEP = 16;

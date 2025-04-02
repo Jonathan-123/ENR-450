@@ -13,5 +13,6 @@ void moveY(int yPos);
 void moveQ1 (float Q1Pos);
 void moveQ2 (float Q2Pos);
 void InverseKinematics(double i, double j);
+void moveAllBasic(float X, float Y, float Z);
 void moveAll(float X, float Y, float Z);
 #endif

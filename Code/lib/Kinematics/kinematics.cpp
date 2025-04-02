@@ -156,8 +156,8 @@ void moveQ1 (float Q1Pos){
   //Serial.println(deltaQ1Steps);
   int deltaQ1StepsInt = static_cast<int>(deltaQ1Steps);
   stepQ1(deltaQ1StepsInt);
-  //Serial.print(currentQ1Pos*0.01125);
-  //Serial.println(" degrees - Theta1");
+  Serial.print(currentQ1Pos*0.01125);
+  Serial.println(" degrees - Theta1");
 }
 
 void moveQ2 (float Q2Pos){
@@ -166,8 +166,8 @@ void moveQ2 (float Q2Pos){
   //Serial.println(deltaQ1Steps);
   int deltaQ2StepsInt = static_cast<int>(deltaQ2Steps);
   stepQ2(deltaQ2StepsInt);
-  //Serial.print(currentQ2Pos*0.01406);
-  //Serial.println(" degrees - Theta1");
+  Serial.print(currentQ2Pos*0.01406);
+  Serial.println(" degrees - Theta2");
 }
 
 void InverseKinematics(double i, double j){
@@ -184,28 +184,42 @@ void InverseKinematics(double i, double j){
   Serial.println(theta3/RADS);
 }
 
+void moveAllBasic(float X, float Y, float Z){  
+  InverseKinematics(X,Z);
+  theta1=theta1/RADS;
+  theta2=theta2/RADS;
+  moveQ1(theta1);
+  moveQ2(theta2);
+  moveY(Y);
+}
 
 void moveAll(float X, float Y, float Z){
   Q1DELAY = 100;
   Q2DELAY = 100;
+  Q3DELAY = 100;
   float Q1Pos, Q2Pos, Q3Pos;  
   InverseKinematics(X, Z);
 //calculate absolute position delta, then convert into an int number of steps
   //Theta1
+  Q1Pos = theta1/RADS;
   float Q1Steps = Q1Pos / 0.01125;
   float deltaQ1Steps = Q1Steps - currentQ1Pos;
   int deltaQ1StepsInt = static_cast<int>(deltaQ1Steps);
   //Theta2
-  float Q2Steps = Q2Pos / 0.01125;
+  Q2Pos = theta2/RADS;
+  float Q2Steps = Q2Pos / 0.01406;
   float deltaQ2Steps = Q2Steps - currentQ2Pos;
   int deltaQ2StepsInt = static_cast<int>(deltaQ2Steps);
   //Theta3
-  float Q3Steps = Q3Pos / 0.01125;
+  Q3Pos = theta3/RADS;
+  float Q3Steps = Q3Pos / 0.01406;
   float deltaQ3Steps = Q3Steps - currentQ3Pos;
   int deltaQ3StepsInt = static_cast<int>(deltaQ3Steps);
   //Y 
   int deltaY = Y - (currentYPos/80);
   int deltaYSteps = deltaY * Y_STEPS_PER_MM;
+  Serial.print(deltaYSteps);
+  Serial.println("deltaYsteps");
 
   int SIGN1, SIGN2, SIGN3, SIGNY;
   if(deltaQ1StepsInt>=0){
@@ -259,23 +273,27 @@ void moveAll(float X, float Y, float Z){
   for (int BLAH=0; BLAH < maximumSteps; BLAH++){
     if(deltaY != 0){
       stepY(1*SIGNY);
-      deltaY = deltaY + SIGNY;
+      deltaYSteps = deltaYSteps - SIGNY;
     }
     if(deltaQ1StepsInt != 0){
       stepQ1(1*SIGN1);
-      deltaQ1StepsInt = deltaQ1StepsInt + SIGN1;
+      deltaQ1StepsInt = deltaQ1StepsInt - SIGN1;
     }
     if(deltaQ2StepsInt != 0){
       stepQ2(1*SIGN2);
-      deltaQ2StepsInt = deltaQ2StepsInt + SIGN2;
+      deltaQ2StepsInt = deltaQ2StepsInt - SIGN2;
     }
     if(deltaQ3StepsInt != 0){
       stepQ3(1*SIGN3);
-      deltaQ3StepsInt = deltaQ3StepsInt + SIGN3;
+      deltaQ3StepsInt = deltaQ3StepsInt - SIGN3;
     }
+    Serial.print(Y);
+    Serial.print("\t");
+    Serial.println(currentYPos);
+
   }
-  Q1DELAY = 300;
-  Q2DELAY = 300;
+  //Q1DELAY = 300;
+  //Q2DELAY = 300;
 
   Serial.print(currentQ1Pos*0.01125);
   Serial.println(" degrees - Theta1");
