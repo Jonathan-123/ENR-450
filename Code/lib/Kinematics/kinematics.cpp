@@ -143,8 +143,8 @@ void stepQ3(int steps){
 
 //moves Ystepper to an absolute Y position
 void moveY(int yPos){
-  int deltaY = yPos - (currentYPos/80);
-  int deltaYSteps = deltaY * Y_STEPS_PER_MM;
+  double deltaY = yPos - (currentYPos/80);
+  int deltaYSteps = static_cast<int>(deltaY * Y_STEPS_PER_MM);
   //Serial.println(deltaY);
   stepY(deltaYSteps);
 }
@@ -171,7 +171,8 @@ void moveQ2 (float Q2Pos){
 }
 
 void InverseKinematics(double i, double j){
-  j = j + L3;
+  i = i+100;
+  //j = j + L3;
   float omega = (-90*RADS);
 //  float omega = (90*RADS) + theta4;
   theta2 = -acos((pow(i,2) + pow(j,2)-pow(L1,2)-pow(L2,2))/(2*L1*L2));

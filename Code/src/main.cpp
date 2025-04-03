@@ -3,7 +3,7 @@
 #include <kinematics.h>
 
 // put function declarations here:
-
+double X,Y,Z;
 
 void setup() {
   //Y motor Pins
@@ -30,15 +30,20 @@ void setup() {
   HomeQ2();
   moveQ2(-90);
   HomeQ1();
-  currentQ3Pos = 0;
+  HomeQ3();
   //Serial.println("Home Q1");
   delay(500);
-  //moveAll(300, 0, 0);
-  //moveAllBasic(300, 0, 0);
-  delay(1000);
-  moveAll(300,0,-150);
-  delay(500);
-  moveAll(300,600,-150);
+  for(float z = 0; z < 300; z += 0.1){
+    Y = z;
+    X = -(pow((Y-150),2)/90)+300;
+    Z = 0;
+    moveAll(X,Y,Z);
+    //delay(10);
+
+  }
+  //moveAll(300,0,-150);
+  //delay(500);
+  //moveAll(300,600,-150);
   //InverseKinematics(400,300);
   //moveAll(400, 0, 300);
   //moveAllBasic(300, 0, 50);

@@ -64,8 +64,8 @@ double theta2 = 0 ;
 double theta3 = 0 ;
 double theta4 = 0 ;
 
-int L1=235;
-int L2=235;
+int L1=349;
+int L2=324;
 int L3=120;
 
 double RADS = 0.01745329;       // radains/degree
