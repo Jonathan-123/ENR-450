@@ -2,6 +2,7 @@
 #include <config.h>
 #include <math.h>
 
+
 //Homes the Y stepper motor
 void HomeY(){
   digitalWrite(dirY,YNegative);
@@ -301,5 +302,3 @@ void moveAll(float X, float Y, float Z){
   Serial.println(" degrees - Theta2");
 }
 
-
-  
