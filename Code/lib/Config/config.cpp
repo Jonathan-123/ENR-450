@@ -68,7 +68,7 @@ float L1=353.16;
 float L2=320.86;
 float L3=120;
 
-double X_OFFSET = 50;
-double Y_OFFSET = 50;
+double X_OFFSET = 200;
+double Y_OFFSET = 0;
 
 double RADS = 0.0174532925;       // radains/degree

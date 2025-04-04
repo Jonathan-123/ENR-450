@@ -26,15 +26,17 @@ void setup() {
   Serial.begin(115200);
   Serial.println("hello");
   InverseKinematics(200,0);
-  /*
-  currentYPos = 0;
+  
+  //currentYPos = 0;
   HomeQ2();
   moveQ2(-90);
   HomeQ1();
   moveQ1(90);
   HomeQ3();
   HomeY();
+  //moveAll(0,0,0);
   //Serial.println("Home Q1");
+  
   delay(500);
   for(float z = 0; z < 300; z += 0.1){
     Y = z;
@@ -44,7 +46,7 @@ void setup() {
     //delay(10);
 
   }
-*/
+
 }
 
 void loop() {
