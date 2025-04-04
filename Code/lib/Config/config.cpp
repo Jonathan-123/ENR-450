@@ -62,10 +62,13 @@ int LimitQ3 = 0;
 double theta1 = 0 ;
 double theta2 = 0 ;
 double theta3 = 0 ;
-double theta4 = 0 ;
+double theta4 = 20 ;
 
-int L1=349;
-int L2=324;
-int L3=120;
+float L1=353.16;
+float L2=320.86;
+float L3=120;
 
-double RADS = 0.01745329;       // radains/degree
+double X_OFFSET = 50;
+double Y_OFFSET = 50;
+
+double RADS = 0.0174532925;       // radains/degree

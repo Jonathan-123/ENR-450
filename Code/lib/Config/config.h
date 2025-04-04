@@ -66,9 +66,12 @@ extern double theta2;
 extern double theta3;
 extern double theta4;
 
-extern int L1;
-extern int L2;
-extern int L3;
+extern float L1;
+extern float L2;
+extern float L3;
+
+extern double X_OFFSET;
+extern double Y_OFFSET;
 
 extern double RADS;
 

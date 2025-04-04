@@ -171,10 +171,17 @@ void moveQ2 (float Q2Pos){
 }
 
 void InverseKinematics(double i, double j){
-  i = i+100;
+  i = i + X_OFFSET;
+  j = j + Y_OFFSET;
+
+  //i = i+ 200;
   //j = j + L3;
-  float omega = (-90*RADS);
-//  float omega = (90*RADS) + theta4;
+  double x_intermediate = (i*cos(theta4*RADS));//+200;
+  double y_intermediate = (i*sin(theta4*RADS)) + (j*cos(theta4*RADS));// + L3;
+  i=x_intermediate;
+  j=y_intermediate;
+  //float omega = (-90*RADS);
+  float omega = (-90*RADS) + (theta4*RADS);
   theta2 = -acos((pow(i,2) + pow(j,2)-pow(L1,2)-pow(L2,2))/(2*L1*L2));
   theta1 = atan2(j,i) - atan2((L1*sin(theta2)),(L1+(L2*cos(theta2))));
   theta3 = (omega) - theta1 - theta2;
