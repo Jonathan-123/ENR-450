@@ -40,8 +40,8 @@ int Q2DELAY = 300;
 //-----Q3-----
 int Q3_uSTEP = 16;
 float Q3_STEPS_PER_DEGREE = (200*Q3_uSTEP*10)/360;
-int Q3Negative = 0;
-int Q3Positive = 1;
+int Q3Negative = 1;
+int Q3Positive = 0;
 int Q3DELAY = 300;
 
 //Location Data

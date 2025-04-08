@@ -13,6 +13,7 @@ void HomeY(){
     delayMicroseconds(YDELAY);
     LimitY = digitalRead(homeLimitYMin);
   }
+  //currentYPos = -140;
   currentYPos = 0;
 }
 //Homes the Q1 Stepper Motor
@@ -41,7 +42,7 @@ void HomeQ2(){
     LimitQ2 = digitalRead(homeLimitQ2Max);
     Serial.println(LimitQ2);
   }
-  currentQ2Pos = 168*Q2_STEPS_PER_DEGREE;
+  currentQ2Pos = 140*Q2_STEPS_PER_DEGREE;
 }
 void HomeQ3(){
   currentQ3Pos = 0;
@@ -169,13 +170,23 @@ void moveQ2 (float Q2Pos){
   Serial.print(currentQ2Pos*0.01406);
   Serial.println(" degrees - Theta2");
 }
+void moveQ3 (float Q3Pos){
+  float Q3Steps = Q3Pos / 0.01406;
+  float deltaQ3Steps = Q3Steps - currentQ3Pos;
+  //Serial.println(deltaQ1Steps);
+  int deltaQ3StepsInt = static_cast<int>(deltaQ3Steps);
+  stepQ3(deltaQ3StepsInt);
+  //Serial.print(currentQ3Pos*0.01406);
+  //Serial.println(" degrees - Theta2");
+}
+
 
 void InverseKinematics(double i, double j){
   //i = i + X_OFFSET + (L3*cos(theta4*RADS));
   //j = j + Y_OFFSET + (L3*sin(theta4*RADS));
 
-  i = i + 300;
-  j = j - L3;
+  i = i + 200;
+  j = j + L3;
   /*
   double x_intermediate = (i*cos(theta4*RADS));//+200;
   double y_intermediate = (i*sin(theta4*RADS)) + (j*cos(theta4*RADS));// + L3;
@@ -187,11 +198,11 @@ void InverseKinematics(double i, double j){
   theta2 = -acos((pow(i,2) + pow(j,2)-pow(L1,2)-pow(L2,2))/(2*L1*L2));
   theta1 = atan2(j,i) - atan2((L1*sin(theta2)),(L1+(L2*cos(theta2))));
   theta3 = (omega) - theta1 - theta2;
-  Serial.print(theta1/RADS);
-  Serial.print("\t");
-  Serial.print(theta2/RADS);
-  Serial.print("\t");
-  Serial.println(theta3/RADS);
+  //Serial.print(theta1/RADS);
+  //Serial.print("\t");
+  //Serial.print(theta2/RADS);
+  //Serial.print("\t");
+  //Serial.println(theta3/RADS);
 }
 
 void moveAllBasic(float X, float Y, float Z){  
@@ -297,18 +308,18 @@ void moveAll(float X, float Y, float Z){
       stepQ3(1*SIGN3);
       deltaQ3StepsInt = deltaQ3StepsInt - SIGN3;
     }
-    Serial.print(Y);
-    Serial.print("\t");
-    Serial.println(currentYPos);
+    //Serial.print(Y);
+    //Serial.print("\t");
+    //Serial.println(currentYPos);
 
   }
   //Q1DELAY = 300;
   //Q2DELAY = 300;
 
-  Serial.print(currentQ1Pos*0.01125);
-  Serial.println(" degrees - Theta1");
-  Serial.print(currentQ2Pos*0.01406);
-  Serial.println(" degrees - Theta2");
+  //Serial.print(currentQ1Pos*0.01125);
+  //Serial.println(" degrees - Theta1");
+  //Serial.print(currentQ2Pos*0.01406);
+  //Serial.println(" degrees - Theta2");
 }
 
 

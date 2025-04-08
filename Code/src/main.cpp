@@ -36,6 +36,7 @@ void setup() {
   HomeY();
   //moveAll(0,0,0);
   //Serial.println("Home Q1");
+  //moveQ3(-45);
   
   delay(500);
   for(float z = 0; z < 300; z += 0.1){
