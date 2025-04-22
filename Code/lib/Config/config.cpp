@@ -15,7 +15,7 @@ int homeLimitQ2Max = 16;
 
 int pinQ3 = 14;
 int dirQ3 = 12;
-int homeLimitQ3Min = 19;
+int homeLimitQ3Max = 5;
 //Stepper Motor Specs
 //-----Y-----
 int Y_uSTEP = 16;
@@ -39,7 +39,7 @@ int Q2Positive = 1;
 int Q2DELAY = 300;
 //-----Q3-----
 int Q3_uSTEP = 16;
-float Q3_STEPS_PER_DEGREE = (200*Q3_uSTEP*10)/360;
+float Q3_STEPS_PER_DEGREE = (200*Q3_uSTEP*8)/360;
 int Q3Negative = 1;
 int Q3Positive = 0;
 int Q3DELAY = 300;
@@ -64,8 +64,8 @@ double theta2 = 0 ;
 double theta3 = 0 ;
 double theta4 = 20 ;
 
-float L1=353.16;
-float L2=320.86;
+float L1=200;
+float L2=200;
 float L3=120;
 
 double X_OFFSET = 200;

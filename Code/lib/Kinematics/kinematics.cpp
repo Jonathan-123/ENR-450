@@ -28,7 +28,7 @@ void HomeQ1(){
     LimitQ1 = digitalRead(homeLimitQ1Min);
     Serial.println(LimitQ1);
   }
-  currentQ1Pos = 16350;
+  currentQ1Pos = 176*Q1_STEPS_PER_DEGREE;
 }
 //Homes the Q2 Stepper Motor
 void HomeQ2(){
@@ -42,10 +42,20 @@ void HomeQ2(){
     LimitQ2 = digitalRead(homeLimitQ2Max);
     Serial.println(LimitQ2);
   }
-  currentQ2Pos = 140*Q2_STEPS_PER_DEGREE;
+  currentQ2Pos = 137*Q2_STEPS_PER_DEGREE;
 }
 void HomeQ3(){
-  currentQ3Pos = 0;
+  digitalWrite(dirQ3,Q3Positive);
+  LimitQ3 = digitalRead(homeLimitQ3Max);
+  while(LimitQ3 != 1){
+    digitalWrite(pinQ3, 1);
+    delayMicroseconds(Q3DELAY);
+    digitalWrite(pinQ3, 0);
+    delayMicroseconds(Q3DELAY);
+    LimitQ3 = digitalRead(homeLimitQ3Max);
+    //Serial.println(LimitQ2);
+  }
+  currentQ3Pos = 165*Q3_STEPS_PER_DEGREE;
 }
 
 
@@ -185,8 +195,8 @@ void InverseKinematics(double i, double j){
   //i = i + X_OFFSET + (L3*cos(theta4*RADS));
   //j = j + Y_OFFSET + (L3*sin(theta4*RADS));
 
-  i = i + 200;
-  j = j + L3;
+  //i = i + 300;
+  //j = j - 45;
   /*
   double x_intermediate = (i*cos(theta4*RADS));//+200;
   double y_intermediate = (i*sin(theta4*RADS)) + (j*cos(theta4*RADS));// + L3;
@@ -206,6 +216,7 @@ void InverseKinematics(double i, double j){
 }
 
 void moveAllBasic(float X, float Y, float Z){  
+  X;
   InverseKinematics(X,Z);
   theta1=theta1/RADS;
   theta2=theta2/RADS;
@@ -218,7 +229,9 @@ void moveAll(float X, float Y, float Z){
   Q1DELAY = 100;
   Q2DELAY = 100;
   Q3DELAY = 100;
-  float Q1Pos, Q2Pos, Q3Pos;  
+  float Q1Pos, Q2Pos, Q3Pos;
+  X = X + 250;
+  Z = Z - 40;  
   InverseKinematics(X, Z);
 //calculate absolute position delta, then convert into an int number of steps
   //Theta1

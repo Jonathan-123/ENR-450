@@ -15,7 +15,7 @@ extern int homeLimitQ2Max;
 
 extern int pinQ3;
 extern int dirQ3;
-extern int homeLimitQ3Min;
+extern int homeLimitQ3Max;
 
  //Stepper Motor Specs
 extern int Y_uSTEP;
